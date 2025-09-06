@@ -3,6 +3,7 @@ import { useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './Components/Auth/Login'
+import EmployeeDashboard from './Components/Dashboard.jsx/EmployeeDashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
      <div>
-      <Login/>
+      {/* <Login/> */}
+      <EmployeeDashboard/>
      </div>
     </>
   )
