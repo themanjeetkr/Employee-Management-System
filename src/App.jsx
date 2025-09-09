@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './Components/Auth/Login'
 import EmployeeDashboard from './Components/Dashboard.jsx/EmployeeDashboard'
+import AdminDashboard from './Components/Dashboard.jsx/AdminDashboard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +13,8 @@ function App() {
     <>
      <div>
       {/* <Login/> */}
-      <EmployeeDashboard/>
+      {/* <EmployeeDashboard/> */}
+      <AdminDashboard/>
      </div>
     </>
   )
