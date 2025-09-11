@@ -12,8 +12,8 @@ function App() {
   return (
     <>
      <div>
-      {/* <Login/> */}
-      {/* <EmployeeDashboard/> */}
+      <Login/>
+      <EmployeeDashboard/>
       <AdminDashboard/>
      </div>
     </>
