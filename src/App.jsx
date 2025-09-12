@@ -9,28 +9,28 @@ import { setLocalStorage,getEmployeesLocalStorage, getAdminLocalStorage} from '.
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-  setLocalStorage();
-
-  const employees = getEmployeesLocalStorage();
-  const admin = getAdminLocalStorage();
-
-  console.log("Employees:", employees);
-  console.log("Admin:", admin);
-}, []);
-
-
-
+ const [user,setuser]=useState(null)
   return (
     <>
-     <div>
-      <Login/>
-      <EmployeeDashboard/>
-      <AdminDashboard/>
-     </div>
+   
+{!user ?  <Login/>:" "}
+      {/* <EmployeeDashboard/>
+      <AdminDashboard/> */}
+    
     </>
   )
 }
 
 export default App
+
+
+//   const [count, setCount] = useState(0)
+//   useEffect(() => {
+//   setLocalStorage();
+
+//   const employees = getEmployeesLocalStorage();
+//   const admin = getAdminLocalStorage();
+
+//   console.log("Employees:", employees);
+//   console.log("Admin:", admin);
+// }, []);
