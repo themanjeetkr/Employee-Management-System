@@ -10,10 +10,30 @@ import { setLocalStorage,getEmployeesLocalStorage, getAdminLocalStorage} from '.
 
 function App() {
  const [user,setuser]=useState(null)
+
+
+ const handlelogin=(email,password)=>{
+  if(email=='admin@name.com' && password=='123'){
+    console.log('admin logged in')
+    setuser('admin')
+    
+  }
+  else if(email=='user@ame.com' &&password=='123'){
+    console.log( 'you are user')
+setuser('user')
+  }
+  
+  else{
+    alert('invalit credentials')
+
+  }
+
+ }
   return (
     <>
    
-{!user ?  <Login/>:" "}
+{!user ?  <Login handlelogin={handlelogin}/>:" "}
+{user=='user' ? <EmployeeDashboard/>:<EmployeeDashboard/>}
       {/* <EmployeeDashboard/>
       <AdminDashboard/> */}
     
