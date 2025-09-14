@@ -1,56 +1,49 @@
-import { useState, useEffect} from 'react'
+import { useState, useContext, useEffect } from 'react'   // ✅ added useContext
 // import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Login from './Components/Auth/Login'
 import EmployeeDashboard from './Components/Dashboard.jsx/EmployeeDashboard'
 import AdminDashboard from './Components/Dashboard.jsx/AdminDashboard'
-import { setLocalStorage,getEmployeesLocalStorage, getAdminLocalStorage} from './Utils/LocalStorage'
 
+import { setLocalStorage, getEmployeesLocalStorage, getAdminLocalStorage } from './Utils/LocalStorage'
+import { AuthContext } from './Context/AuthProvider'
 
 function App() {
- const [user,setuser]=useState(null)
+  const [user, setuser] = useState(null)
 
-
- const handlelogin=(email,password)=>{
-  if(email=='admin@name.com' && password=='123'){
-    console.log('admin logged in')
-    setuser('admin')
-    
+  const handlelogin = (email, password) => {
+    if (email === 'admin@name.com' && password === '123') {
+      console.log('admin logged in')
+      setuser('admin')
+    } else if (email === 'user@name.com' && password === '123') {
+      console.log('you are user')
+      setuser('user')
+    } else {
+      alert('invalid credentials')
+    }
   }
-  else if(email=='user@ame.com' &&password=='123'){
-    console.log( 'you are user')
-setuser('user')
-  }
+  useEffect(() => {
+    setLocalStorage()
+   
+  }, [])
   
-  else{
-    alert('invalit credentials')
 
-  }
+  // ✅ consume context
+  const data = useContext(AuthContext)
+  console.log("Context value:", data)
 
- }
   return (
     <>
-   
-{!user ?  <Login handlelogin={handlelogin}/>:" "}
-{user=='user' ? <EmployeeDashboard/>:<EmployeeDashboard/>}
-      {/* <EmployeeDashboard/>
-      <AdminDashboard/> */}
-    
+      {!user ? (
+        <Login handlelogin={handlelogin} />
+      ) : user === 'admin' ? (
+        <AdminDashboard />
+      ) : (
+        <EmployeeDashboard />
+      )}
     </>
   )
 }
 
 export default App
-
-
-//   const [count, setCount] = useState(0)
-//   useEffect(() => {
-//   setLocalStorage();
-
-//   const employees = getEmployeesLocalStorage();
-//   const admin = getAdminLocalStorage();
-
-//   console.log("Employees:", employees);
-//   console.log("Admin:", admin);
-// }, []);
