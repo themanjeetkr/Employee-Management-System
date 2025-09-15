@@ -11,25 +11,31 @@ import { AuthContext } from './Context/AuthProvider'
 
 function App() {
   const [user, setuser] = useState(null)
+  const [loggedinuser, setloggedinuser] = useState(second)
   const authdata=useContext(AuthContext)
+
   console.log("auth data:",authdata.employees)
-  useEffect(() => {
-const loggedinuser=localStorage.getItem('loggedinuser')
-if(loggedinuser){
-  setuser(loggedinuser)
-}
-  }, )
+  // useEffect(() => {
+// const loggedinuser=localStorage.getItem('loggedinuser')
+// if(loggedinuser){
+//   setuser(loggedinuser)
+// }
+//   }, )
   
   
 
   const handlelogin = (email, password) => {
     if (email === 'admin@name.com' && password === '123') {
       // console.log('admin logged in')
-      setuser('admin')
+      setuser({role:'admin'})
       localStorage.setItem('loggedinuser',JSON.stringify({role:'admin'}))
-    } else if (authdata && authdata.employees.find((e)=>e.email==email && e.password==password)) {
+    } else if (authdata ) {
       // console.log('you are user')
-      setuser('user')
+      const employee= authdata.employees.find((e)=>e.email==email && e.password==password)
+    if(employee){
+      setuser({role:'employee'})
+      setloggedinuser({role:'employess'})
+    }
        localStorage.setItem('loggedinuser',JSON.stringify({role:'employee'}))
     } else {
       alert('invalid credentials')
