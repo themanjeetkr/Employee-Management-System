@@ -35,6 +35,7 @@ function App() {
     if(employee){
       setuser({role:'employee'})
       setloggedinuser({role:'employess'})
+      
     }
        localStorage.setItem('loggedinuser',JSON.stringify({role:'employee'}))
     } else {
