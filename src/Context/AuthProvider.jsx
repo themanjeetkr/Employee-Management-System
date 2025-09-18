@@ -18,6 +18,7 @@ const AuthProvider = ({ children }) => {
 
   console.log("Admin:", admin);
   console.log("Employees:", employees);
+  
 
   return (
     <AuthContext.Provider value={{ admin, employees }}>
