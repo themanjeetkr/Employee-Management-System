@@ -19,6 +19,12 @@ const employees = [
     password: "123",
     tasks: [],
   },
+   {
+    id: 3,
+    email: "employee3@example.com",
+    password: "123",
+    tasks: [],
+  },
 ];
 
 // Save to localStorage
@@ -34,7 +40,9 @@ export const setLocalStorage = () => {
 // Get Employees
 export const getEmployeesLocalStorage = () => {
   const data = localStorage.getItem("employees");
+  
   return data ? JSON.parse(data) : [];
+
 };
 
 // Get Admin

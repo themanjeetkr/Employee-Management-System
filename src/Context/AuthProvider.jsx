@@ -27,4 +27,8 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-export default AuthProvider;
+useEffect(() => {
+  const id = setInterval(tick, 1000);
+  return () => clearInterval(id);
+}, []);
+
