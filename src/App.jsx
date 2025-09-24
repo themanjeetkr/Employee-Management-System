@@ -11,7 +11,7 @@ import { AuthContext } from './Context/AuthProvider'
 
 function App() {
   const [user, setuser] = useState(null)
-  const [loggedinuser, setloggedinuser] = useState(second)
+  const [loggedinuser, setloggedinuser] = useState()
   //  use authdata = useContext(authcontext)
   const authdata=useContext(AuthContext)
 
